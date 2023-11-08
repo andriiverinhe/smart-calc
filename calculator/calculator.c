@@ -3,31 +3,23 @@
 #include "../stack/stack.h"
 
 
-double s21_calc(char *input) {
+double s21_calc(char *input, const int inputX) {
   int code = 1;
   double result = 0;
 
   if (!input || strlen(input) == 0 || !s21_validator(input)) code = -1;
   else {
   s21_stack *main = NULL;
+  
 
   main = s21_getStackFromStr(input, main);
-  // s21_printStack(main);
-
   if(s21_checkX(main)) {
-    s21_replacingXforValue(main, 1);
-    // s21_printStack(main);
-    
-    main = getStackOnPolishNotation(main);
-    result = s21_NewCalculator(main);
-
-    printf("TRUE\n");
-  } else {
-    main = getStackOnPolishNotation(main);
-    result = s21_NewCalculator(main);
+    s21_replacingXforValue(main, inputX);
   }
-
-
+  // s21_printStack(main);
+  main = getStackOnPolishNotation(main);
+  result = s21_NewCalculator(main);
+  
   if (main)
     s21_clearStack(main);
   }
@@ -35,6 +27,9 @@ double s21_calc(char *input) {
 }
 
 int main() {
-  printf("result: %f\n", s21_calc("x^2"));
-  printf("math: %f\n",2.);
+for(double x = -10; x < 11; x++) {
+  printf("x: %f || f(x): %f\n", x, s21_calc("x^2", 2));
+  
+}
+
 }

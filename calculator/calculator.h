@@ -47,7 +47,7 @@ typedef enum {
 
 double s21_NewCalculator(s21_stack *st);
 
-double s21_calc(char *input);
+double s21_calc(char *input, const int inputX);
 // HELPERS
 void s21_getNumber(const char *input, char *num);
 void s21_getSign(const char *input, char *sign);
@@ -61,4 +61,4 @@ int s21_validator(char *str);
 
 //CALCULATOR WITH X
 int s21_checkX(s21_stack *st);
-void s21_replacingXforValue(s21_stack *main,const double value);
+void s21_replacingXforValue(s21_stack *main, const double value);
