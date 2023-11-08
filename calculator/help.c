@@ -11,7 +11,7 @@ void s21_getNumber(const char *input, char *num) {
 
 void s21_getSign(const char *input, char *sign) {
   if (input[0] == '*' || input[0] == '-' || input[0] == '+' ||
-      input[0] == '/' || input[0] == '^') {
+      input[0] == '/' || input[0] == '^' || input[0] == 'x') {
     sign[0] = input[0];
     sign[1] = '\0';
   } else {
@@ -53,7 +53,7 @@ s21_stack *s21_getStackFromStr(const char *input, s21_stack *main) {
         else if(main->priority == BRACKET && strcmp(main->sign, "(") == 0) plusUnary = 1;
       }
       if(!plusUnary) {
-        printf("123\n");
+        // printf("123\n");
         main = s21_push(main, NAN, sign, s21_getPriority(sign));}
       i += (int)strlen(sign);
     }
@@ -171,8 +171,8 @@ s21_stack *getStackOnPolishNotation(s21_stack *main) {
     tmp = s21_push(tmp, sign->number, sign->sign, sign->priority);
     sign = s21_pop(sign);
   }
-  printf("\tPOLISH\n");
-  s21_printStack(tmp);
+  // printf("\tPOLISH\n");
+  // s21_printStack(tmp);
 
   s21_clearStack(sign);
   return tmp;
@@ -352,12 +352,16 @@ double s21_NewCalculator(s21_stack *st) {
     }
     tmp = tmp->next;
     if(!tmp) {tmp = stmp;
-    s21_printStack(stmp);
+    // s21_printStack(stmp);
     }
     if(stmp && !stmp->next) break;
   }
   return tmp->number;
 }
+
+
+
+// CALCULATION WITH X
 
 int s21_checkX(s21_stack *st) {
   int code = 0;
@@ -368,3 +372,24 @@ int s21_checkX(s21_stack *st) {
   }
   return code;
 }
+
+
+void s21_replacingXforValue(s21_stack *main,const double value) {
+  s21_stack *tmp = main;
+
+  while (tmp)
+  {
+    if(strcmp(tmp->sign, "x") == 0) {
+        tmp->number = value;     
+    }
+    tmp = tmp->next;
+  }
+}
+
+
+
+
+
+
+
+

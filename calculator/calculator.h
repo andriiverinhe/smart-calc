@@ -55,6 +55,10 @@ s21_stack *s21_getStackFromStr(const char *input, s21_stack *main);
 int s21_getPriority(char *sign);
 s21_stack *getStackOnPolishNotation(s21_stack *main);
 void s21_printStrFromStack(s21_stack *st);
-int s21_checkX(s21_stack *st);
 //PARESER
 int s21_validator(char *str);
+
+
+//CALCULATOR WITH X
+int s21_checkX(s21_stack *st);
+void s21_replacingXforValue(s21_stack *main,const double value);

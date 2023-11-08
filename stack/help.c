@@ -20,8 +20,8 @@ void s21_printStack(s21_stack *top) {
   }
 
   s21_stack *current = top;
+    printf("\tSTACK\n");
   while (current != NULL) {
-
     printf("Number: %f, Sign: '%s', Priority: %d\n", current->number,
            current->sign, current->priority);
     current = current->next;

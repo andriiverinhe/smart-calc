@@ -48,7 +48,7 @@ int checkSing(char *str, int *index) {
         }
         if(str[i] == 'm' || str[i] == 'c' || str[i] == 's' ||
            str[i] == 'a' || str[i] == 't' || str[i] == '(' ||
-           str[i] == 'l' || isdigit(str[i])) break;
+           str[i] == 'l' || str[i] == 'x' || isdigit(str[i])) break;
     }
     if(codeSIGN != 1) code = 0;
     *(index) += --i;
@@ -130,6 +130,6 @@ int s21_validator(char *str) {
         // printf("code i: %d\n", i);
         
     }
-
+    
     return code;
 }
